@@ -5,6 +5,7 @@ import { instructors, waLink, whatsappText } from '../data/site';
 ---
 
 <dialog class="chooser" id="wa-chooser" aria-labelledby="wa-chooser-title">
+  <div class="inner">
   <div class="head">
     <h2 id="wa-chooser-title">Who would you like to message?</h2>
     <button type="button" class="close" data-close aria-label="Close">
@@ -23,7 +24,7 @@ import { instructors, waLink, whatsappText } from '../data/site';
               <strong>
                 <V v={i.firstName} /> · {i.transmission}
               </strong>
-              <span>{i.id === 'partner' ? 'Female instructor' : 'Manual lessons, motorway, test-day car hire'}</span>
+              <span>{i.id === 'partner' ? 'Automatic lessons, nervous drivers, refreshers' : 'Manual lessons, motorway, test-day car hire'}</span>
             </span>
             <Icon name="arrow" size={20} class="go" />
           </a>
@@ -32,6 +33,7 @@ import { instructors, waLink, whatsappText } from '../data/site';
     }
   </ul>
   <p class="foot">Opens WhatsApp with a short message ready to send.</p>
+  </div>
 </dialog>
 
 <style>
@@ -39,10 +41,14 @@ import { instructors, waLink, whatsappText } from '../data/site';
     width: min(440px, calc(100vw - 32px));
     border: 0;
     border-radius: var(--radius-lg);
-    padding: 22px;
+    padding: 0;
+    overscroll-behavior: contain;
     background: var(--surface);
     color: var(--ink);
     box-shadow: 0 24px 64px rgb(11 37 69 / 0.25);
+  }
+  .inner {
+    padding: 22px;
   }
   .chooser::backdrop {
     background: rgb(11 37 69 / 0.45);

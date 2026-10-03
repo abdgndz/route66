@@ -15,7 +15,7 @@ const initials = (name: string) =>
     <div class="section-head">
       <p class="eyebrow">Meet your instructors</p>
       <h2>Two instructors, one small local school</h2>
-      <p class="lead">Choose the instructor and gearbox that suit you. Message either of us directly.</p>
+      <p class="lead">Manual with Michael or automatic with {instructors[1].firstName}. Message whichever of us you like.</p>
     </div>
     <div class="cards">
       {
@@ -57,7 +57,7 @@ const initials = (name: string) =>
                 <Icon name="whatsapp" />
                 WhatsApp <V v={i.firstName} />
               </a>
-              <a class="btn btn--ghost" href={telLink(i.phoneE164)} aria-label={`Call ${i.firstName}`}>
+              <a class="btn btn--ghost" href={telLink(i.phoneE164)} aria-label={`Call ${i.firstName} on ${i.phoneDisplay}`}>
                 <Icon name="phone" />
                 <V v={i.phoneDisplay} />
               </a>

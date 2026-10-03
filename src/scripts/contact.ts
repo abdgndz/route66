@@ -25,7 +25,12 @@ dialog?.addEventListener('click', (event) => {
 // Show the sticky bar / floating button once the hero has scrolled away.
 const hero = document.querySelector('[data-hero]');
 const floating = document.querySelectorAll<HTMLElement>('[data-sticky], [data-fab]');
-const setVisible = (visible: boolean) => floating.forEach((el) => el.classList.toggle('is-visible', visible));
+const setVisible = (visible: boolean) =>
+  floating.forEach((el) => {
+    el.classList.toggle('is-visible', visible);
+    // Hidden controls must not be reachable by keyboard or screen readers.
+    el.inert = !visible;
+  });
 
 if (!hero) {
   setVisible(true);

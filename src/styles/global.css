@@ -47,6 +47,12 @@ html {
   scroll-padding-top: calc(var(--header-h) + 12px);
 }
 
+@media (max-width: 899px) {
+  html {
+    scroll-padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -117,11 +123,16 @@ a:hover {
   border-radius: 4px;
 }
 
+.contact :focus-visible,
+.site-footer :focus-visible {
+  outline-color: #fff;
+}
+
 .wrap {
   width: 100%;
   max-width: var(--wrap);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-inline: max(var(--gutter), env(safe-area-inset-left)) max(var(--gutter), env(safe-area-inset-right));
 }
 
 .section {
@@ -195,6 +206,17 @@ a:hover {
   color: var(--btn-fg);
 }
 
+@media (hover: hover) {
+  .btn--wa:hover {
+    --btn-bg: #0b6532;
+  }
+
+  .btn--ghost:hover {
+    --btn-fg: #fff;
+    background: var(--navy);
+  }
+}
+
 .btn:active {
   transform: scale(0.98);
 }
@@ -209,9 +231,6 @@ a:hover {
   --btn-bg: var(--wa-dark);
 }
 
-.btn--wa:hover {
-  --btn-bg: #0b6532;
-}
 
 .btn--ghost {
   --btn-fg: var(--navy);
@@ -219,10 +238,6 @@ a:hover {
   border-color: var(--navy);
 }
 
-.btn--ghost:hover {
-  --btn-fg: #fff;
-  background: var(--navy);
-}
 
 .btn--sm {
   min-height: 44px;

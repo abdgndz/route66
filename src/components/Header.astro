@@ -8,6 +8,7 @@ const nav = [
   { href: '/#areas', label: 'Areas' },
   { href: '/#faq', label: 'FAQ' },
 ];
+const current = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '');
 ---
 
 <header class="site-header">
@@ -20,7 +21,7 @@ const nav = [
       </span>
     </a>
     <nav aria-label="Main" class="nav">
-      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+      {nav.map((n) => <a href={n.href} aria-current={current === n.href ? 'page' : undefined}>{n.label}</a>)}
     </nav>
     <div class="actions">
       <a class="btn btn--ghost btn--sm call" href={telLink(primaryInstructor.phoneE164)}>
@@ -40,13 +41,18 @@ const nav = [
     </div>
   </div>
 </header>
+<nav aria-label="Sections" class="subnav">
+  <div class="wrap subnav-inner">
+    {nav.map((n) => <a href={n.href} aria-current={current === n.href ? 'page' : undefined}>{n.label}</a>)}
+  </div>
+</nav>
 
 <style>
   .site-header {
     position: sticky;
     top: 0;
     z-index: 40;
-    background: rgb(250 248 244 / 0.92);
+    background: var(--bg);
     backdrop-filter: saturate(1.4) blur(10px);
     -webkit-backdrop-filter: saturate(1.4) blur(10px);
     border-bottom: 1px solid var(--border);
@@ -93,8 +99,36 @@ const nav = [
     padding: 10px 12px;
     border-radius: 8px;
   }
-  .nav a:hover {
-    background: var(--surface-2);
+  .nav a[aria-current='page'],
+  .subnav a[aria-current='page'] {
+    color: var(--red);
+  }
+  @media (hover: hover) {
+    .nav a:hover {
+      background: var(--surface-2);
+    }
+  }
+  .subnav {
+    border-bottom: 1px solid var(--border);
+  }
+  .subnav-inner {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .subnav a {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 12px;
+    color: var(--ink);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .subnav a:first-child {
+    padding-left: 0;
   }
   .actions {
     display: flex;
@@ -109,6 +143,9 @@ const nav = [
     }
     .call {
       display: inline-flex;
+    }
+    .subnav {
+      display: none;
     }
   }
 </style>

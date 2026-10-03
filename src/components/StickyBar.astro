@@ -3,7 +3,7 @@ import Icon from './Icon.astro';
 import { primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
 ---
 
-<div class="sticky" data-sticky aria-label="Quick contact">
+<nav class="sticky" data-sticky aria-label="Quick contact">
   <a class="btn btn--ghost call" href={telLink(primaryInstructor.phoneE164)}>
     <Icon name="phone" />
     Call
@@ -18,7 +18,7 @@ import { primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
     <Icon name="whatsapp" />
     WhatsApp us
   </a>
-</div>
+</nav>
 <a
   class="fab"
   href={waLink(primaryInstructor.phoneE164, whatsappText())}
@@ -46,18 +46,22 @@ import { primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border-top: 1px solid var(--border);
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
     transform: translateY(110%);
-    transition: transform 0.25s ease;
+    visibility: hidden;
+    transition:
+      transform 0.25s ease,
+      visibility 0s 0.25s;
   }
   .sticky.is-visible {
     transform: none;
+    visibility: visible;
+    transition-delay: 0s;
   }
   .sticky .btn {
     min-height: 52px;
     background-clip: padding-box;
-  }
-  .call {
-    background: var(--surface);
   }
   .fab {
     display: none;
@@ -93,7 +97,11 @@ import { primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
     }
     .fab:hover {
       color: #fff;
-      background: #0b6532;
+    }
+    @media (hover: hover) {
+      .fab:hover {
+        background: #0b6532;
+      }
     }
   }
   @media print {

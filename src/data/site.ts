@@ -73,7 +73,7 @@ export const instructors: Instructor[] = [
     phoneE164: ph('441234566789'),
     car: ph('Automatic car, dual controls (model on request)'),
     bio: ph(
-      'A relaxed, encouraging female instructor in an automatic car. A popular choice for nervous learners and anyone who would rather not worry about gears and clutch control.',
+      "Relaxed and encouraging, and she teaches in an automatic. A popular choice for nervous learners and anyone who'd rather not worry about gears and clutch control.",
     ),
     tags: ['Automatic', 'Female instructor', 'Nervous drivers', 'Refreshers'],
   },
@@ -93,7 +93,7 @@ export const services = [
   },
   {
     title: 'Manual and automatic',
-    text: `Manual with Michael, automatic with ${partnerName}. Not sure which suits you? Ask and we will talk it through.`,
+    text: `Manual with Michael, automatic with ${partnerName}. Not sure which suits you? Ask and we'll talk it through.`,
   },
   {
     title: 'Intensive courses',
@@ -109,7 +109,7 @@ export const services = [
   },
   {
     title: 'Motorway lessons',
-    text: 'Learners can now take motorway lessons with an ADI in a dual-control car. Ideal before or after your test.',
+    text: 'Learners can take motorway lessons with an ADI in a dual-control car. Useful before or after your test.',
   },
   {
     title: 'Pass Plus',
@@ -128,7 +128,7 @@ export const steps = [
   },
   {
     title: 'Get a clear quote',
-    text: 'We reply with prices and available times. The price we quote is the price you pay, with no extras added later.',
+    text: 'We reply with prices and available times. The price we quote is what you pay. No extras later.',
   },
   {
     title: 'Start driving',
@@ -185,7 +185,7 @@ export const reviews: Review[] = DRAFT
 export const faqs = [
   {
     q: 'How many lessons will I need?',
-    a: 'Everyone is different. DVSA says learners who pass have had around 45 hours of lessons plus 22 hours of private practice on average. After your first lesson we will give you an honest estimate.',
+    a: "Everyone is different. DVSA says learners who pass have had around 45 hours of lessons plus 22 hours of private practice on average. After your first lesson we'll give you an honest estimate.",
   },
   {
     q: 'Should I learn in a manual or an automatic?',
@@ -193,7 +193,7 @@ export const faqs = [
   },
   {
     q: 'How much are lessons?',
-    a: 'Message us on WhatsApp with your area and whether you want manual or automatic, and we will send our current prices and any block booking offers. The price we quote is the full price.',
+    a: "Message us on WhatsApp with your area and whether you want manual or automatic, and we'll send our current prices and any block booking offers.",
   },
   {
     q: 'Do you pick up and drop off?',
@@ -201,11 +201,11 @@ export const faqs = [
   },
   {
     q: 'Which test centres do you use?',
-    a: 'Mostly Tunbridge Wells, Sevenoaks and Maidstone. There is no test centre in Tonbridge itself, so we practise on the routes around the centre you book.',
+    a: 'Mostly Tunbridge Wells, Sevenoaks and Maidstone. The nearest test centres to Tonbridge are Tunbridge Wells and Sevenoaks, so we practise on the routes around the centre you book.',
   },
   {
     q: 'Can I use your car for my driving test?',
-    a: 'Yes. Our test-day package includes a warm-up drive before the test and use of our dual-control car. It is popular with people who already drive but need a UK test car. Early-morning tests may cost a little more.',
+    a: "Yes. Our test-day package includes a warm-up drive before the test and use of our dual-control car. It's popular with people who already drive but need a UK test car. Early-morning test slots carry a surcharge, which we include in your quote.",
   },
   {
     q: 'I have a foreign licence. Can you help?',
@@ -213,15 +213,15 @@ export const faqs = [
   },
   {
     q: 'Do you offer intensive courses?',
-    a: 'Yes, intensive and semi-intensive. How quickly you can take your test depends on DVSA test availability, so we will be honest about realistic dates.',
+    a: "Yes, intensive and semi-intensive. How quickly you can take your test depends on DVSA test availability, so we'll be honest about realistic dates.",
   },
   {
     q: 'What if I need to cancel?',
-    a: 'Please give us at least 48 hours notice and we will move your lesson for free. Lessons cancelled with less notice are normally charged in full.',
+    a: "Give us at least 48 hours' notice and we'll move your lesson for free. With less notice we may charge for the lesson, unless we can fill the slot. We're understanding about illness and emergencies.",
   },
   {
     q: 'What do I need before my first lesson?',
-    a: 'You need to be 17 or over and hold a valid provisional driving licence. Bring it to your first lesson, and glasses or contact lenses if you need them for driving.',
+    a: "You need to be 17 or over (16 if you get the higher rate mobility component of PIP) and hold a valid provisional driving licence. Bring it to your first lesson, and glasses or contact lenses if you need them for driving.",
   },
 ];
 

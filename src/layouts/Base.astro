@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import headingFont from '@fontsource/barlow-condensed/files/barlow-condensed-latin-800-normal.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WaChooser from '../components/WaChooser.astro';
@@ -14,7 +15,8 @@ interface Props {
 }
 
 const { title, description, schema = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', business.url).href;
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/index$/, '/').replace(/(.)\/$/, '$1') || '/';
+const canonical = new URL(path, business.url).href;
 const ogImage = new URL('/og.png', business.url).href;
 
 const jsonLd = {
@@ -36,7 +38,7 @@ const jsonLd = {
     postalCode: business.postcode,
     addressCountry: 'GB',
   },
-  areaServed: areas.map((name) => ({ '@type': 'City', name })),
+  areaServed: areas.map((name) => ({ '@type': 'Place', name })),
   founder: { '@type': 'Person', name: instructors[0].fullName },
   employee: instructors.map((i) => ({
     '@type': 'Person',
@@ -59,8 +61,9 @@ const jsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {DRAFT && <meta name="robots" content="noindex, nofollow" />}
-    <meta name="theme-color" content="#0b2545" />
+    <meta name="theme-color" content="#faf8f4" />
     <meta name="format-detection" content="telephone=no" />
+    <link rel="preload" href={headingFont} as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
