@@ -1,0 +1,121 @@
+---
+import Icon from './Icon.astro';
+import V from './V.astro';
+import { business, instructors, primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
+---
+
+<section class="section contact" id="contact">
+  <div class="wrap inner">
+    <div class="copy">
+      <p class="eyebrow light">Get started</p>
+      <h2>Ready when you are</h2>
+      <p class="lead">
+        Send us a WhatsApp with your area and manual or automatic. We will reply with prices and our next free lesson
+        times.
+      </p>
+    </div>
+    <div class="actions">
+      <a
+        class="btn btn--wa big"
+        href={waLink(primaryInstructor.phoneE164, whatsappText())}
+        data-wa-chooser
+        target="_blank"
+        rel="noopener"
+      >
+        <Icon name="whatsapp" />
+        WhatsApp us
+      </a>
+      <ul class="lines">
+        {
+          instructors.map((i) => (
+            <li>
+              <Icon name="phone" size={18} />
+              <span>
+                <V v={i.firstName} /> ({i.transmission.toLowerCase()}):{' '}
+                <a href={telLink(i.phoneE164)}>
+                  <V v={i.phoneDisplay} />
+                </a>
+              </span>
+            </li>
+          ))
+        }
+        <li>
+          <Icon name="mail" size={18} />
+          <a href={`mailto:${business.email}`}><V v={business.email} /></a>
+        </li>
+        <li>
+          <Icon name="clock" size={18} />
+          <span>{business.hours}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    background: var(--navy);
+    color: #e6ecf5;
+  }
+  .inner {
+    display: grid;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .inner {
+      grid-template-columns: 1.1fr 1fr;
+      gap: 56px;
+    }
+  }
+  .copy {
+    display: grid;
+    gap: 14px;
+  }
+  h2 {
+    color: #fff;
+  }
+  .lead {
+    color: #c9d4e6;
+  }
+  .light {
+    color: #ff9aa9;
+  }
+  .light::before {
+    background: conic-gradient(#fff 25%, transparent 0 50%, #fff 0 75%, transparent 0) 0 0 / 8px 8px;
+  }
+  .actions {
+    display: grid;
+    gap: 22px;
+    background: rgb(255 255 255 / 0.06);
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 3vw, 32px);
+  }
+  .big {
+    min-height: 60px;
+    font-size: 1.15rem;
+  }
+  .lines {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+  }
+  .lines li {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .lines :global(svg) {
+    flex: none;
+    color: #9fb7d8;
+  }
+  a:not(.btn) {
+    color: #fff;
+  }
+  .contact :global(mark.ph) {
+    color: #2b2100;
+  }
+</style>

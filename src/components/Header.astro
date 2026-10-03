@@ -1,0 +1,114 @@
+---
+import LogoMark from './LogoMark.astro';
+import Icon from './Icon.astro';
+import { primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
+const nav = [
+  { href: '/#instructors', label: 'Instructors' },
+  { href: '/lessons', label: 'Lessons' },
+  { href: '/#areas', label: 'Areas' },
+  { href: '/#faq', label: 'FAQ' },
+];
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="brand" aria-label="Route 66 Driving School, home">
+      <LogoMark size={40} />
+      <span class="brand-text">
+        <span class="brand-name">Route 66</span>
+        <span class="brand-sub">Driving School</span>
+      </span>
+    </a>
+    <nav aria-label="Main" class="nav">
+      {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+    </nav>
+    <div class="actions">
+      <a class="btn btn--ghost btn--sm call" href={telLink(primaryInstructor.phoneE164)}>
+        <Icon name="phone" size={18} />
+        <span>{primaryInstructor.phoneDisplay}</span>
+      </a>
+      <a
+        class="btn btn--wa btn--sm"
+        href={waLink(primaryInstructor.phoneE164, whatsappText())}
+        data-wa-chooser
+        target="_blank"
+        rel="noopener"
+      >
+        <Icon name="whatsapp" size={18} />
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgb(250 248 244 / 0.92);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: var(--header-h);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    margin-right: auto;
+  }
+  .brand-text {
+    display: grid;
+    line-height: 1;
+    font-family: var(--font-head);
+    text-transform: uppercase;
+  }
+  .brand-name {
+    font-weight: 800;
+    font-size: 1.35rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+  .brand-sub {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--red);
+    letter-spacing: 0.14em;
+  }
+  .nav {
+    display: none;
+    gap: 4px;
+  }
+  .nav a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 12px;
+    border-radius: 8px;
+  }
+  .nav a:hover {
+    background: var(--surface-2);
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+  }
+  .call {
+    display: none;
+  }
+  @media (min-width: 960px) {
+    .nav {
+      display: flex;
+    }
+    .call {
+      display: inline-flex;
+    }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+import Icon from './Icon.astro';
+const items = [
+  { icon: 'shield', title: 'DVSA ADIs', text: 'Both fully qualified' },
+  { icon: 'heart', title: 'Husband & wife', text: 'A small local team' },
+  { icon: 'pin', title: 'Based in Hadlow', text: 'Covering West Kent' },
+  { icon: 'clock', title: '7 days a week', text: 'Times to suit you' },
+] as const;
+---
+
+<section class="trust" aria-label="Why learners choose us">
+  <ul class="wrap list">
+    {
+      items.map((i) => (
+        <li>
+          <Icon name={i.icon} size={26} />
+          <span>
+            <strong>{i.title}</strong>
+            {i.text}
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .trust {
+    background: var(--surface);
+    border-block: 1px solid var(--border);
+  }
+  .list {
+    list-style: none;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+    padding-block: 28px;
+  }
+  @media (min-width: 860px) {
+    .list {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  li :global(svg) {
+    color: var(--red);
+    flex: none;
+    margin-top: 2px;
+  }
+  span {
+    display: grid;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  strong {
+    color: var(--navy);
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+</style>

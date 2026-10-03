@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import V from '../components/V.astro';
+import { business } from '../data/site';
+---
+
+<Base title="Privacy notice | Route 66 Driving School" description="How Route 66 Driving School uses your personal information.">
+  <section class="section">
+    <div class="wrap prose">
+      <p class="eyebrow">Privacy</p>
+      <h1>Privacy notice</h1>
+      <p>Last updated: 3 October 2026.</p>
+
+      <h2>Who we are</h2>
+      <p>
+        {business.name} is run by <V v={business.owner} />, a {business.legalForm}, who is the data controller for the
+        information described here. Address: <V v={business.address} />. Email:
+        <a href={`mailto:${business.email}`}><V v={business.email} /></a>.
+      </p>
+
+      <h2>What we collect and why</h2>
+      <ul>
+        <li>
+          <strong>When you contact us</strong> by WhatsApp, phone or email: your name, phone number and anything you
+          tell us, such as your area and availability. We use this to reply and to arrange lessons (taking steps at your
+          request before a contract).
+        </li>
+        <li>
+          <strong>When you book lessons</strong>: your address for pick-up, provisional licence details, lesson and test
+          dates, and payment records. We need this to provide lessons and meet our legal and insurance obligations.
+        </li>
+        <li>
+          <strong>Website statistics</strong>: if enabled, we use cookie-free analytics that count visits and clicks on
+          our contact buttons without identifying you or storing anything on your device. This helps us improve the site.
+        </li>
+      </ul>
+
+      <h2>WhatsApp</h2>
+      <p>
+        Our WhatsApp buttons are plain links. Nothing from WhatsApp loads on this website. If you message us, WhatsApp
+        (Meta) processes your messages under its own privacy policy.
+      </p>
+
+      <h2>Cookies</h2>
+      <p>This website does not set cookies.</p>
+
+      <h2>Who we share it with</h2>
+      <p>
+        We do not sell your information. We use a small number of service providers to run this website and our email
+        (for example our web host). We may share details with DVSA when booking or managing driving tests, or where the
+        law requires it.
+      </p>
+
+      <h2>How long we keep it</h2>
+      <p>
+        Enquiries that do not lead to lessons are deleted within 12 months. Pupil records are kept for up to 6 years
+        after your last lesson for accounting and insurance purposes.
+      </p>
+
+      <h2>Your rights</h2>
+      <p>
+        You can ask to see, correct or delete your information, or object to how we use it. Contact us using the details
+        above. If you are unhappy with how we handle your data, you can complain to the Information Commissioner's Office
+        at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk</a>.
+      </p>
+    </div>
+  </section>
+</Base>

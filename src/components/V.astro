@@ -1,0 +1,10 @@
+---
+// Renders a business value; highlights it on the draft if it is a placeholder.
+import { isPlaceholder } from '../data/site';
+interface Props {
+  v: string;
+}
+const { v } = Astro.props;
+---
+
+{isPlaceholder(v) ? <mark class="ph" title="Placeholder – needs Michael's real info">{v}</mark> : v}

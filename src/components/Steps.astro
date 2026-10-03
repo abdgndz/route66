@@ -1,0 +1,59 @@
+---
+import { steps } from '../data/site';
+---
+
+<section class="section section--alt" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>From first message to first lesson</h2>
+    </div>
+    <ol class="steps">
+      {
+        steps.map((s, i) => (
+          <li>
+            <span class="n" aria-hidden="true">{i + 1}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 28px;
+  }
+  @media (min-width: 860px) {
+    .steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 32px;
+    }
+  }
+  li {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+  }
+  .n {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--navy);
+    color: #fff;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.4rem;
+  }
+  li p {
+    color: var(--muted);
+  }
+</style>

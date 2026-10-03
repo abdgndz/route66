@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WaChooser from '../components/WaChooser.astro';
+import StickyBar from '../components/StickyBar.astro';
+import { DRAFT, business, instructors, areas, services } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Adds the LocalBusiness JSON-LD (home page only). */
+  schema?: boolean;
+}
+
+const { title, description, schema = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', business.url).href;
+const ogImage = new URL('/og.png', business.url).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'EducationalOrganization'],
+  '@id': `${business.url}/#business`,
+  name: business.name,
+  url: business.url,
+  logo: `${business.url}/logo.png`,
+  image: ogImage,
+  description,
+  telephone: `+${instructors[0].phoneE164}`,
+  email: business.email,
+  foundingDate: business.founded,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: business.locality,
+    addressRegion: business.region,
+    postalCode: business.postcode,
+    addressCountry: 'GB',
+  },
+  areaServed: areas.map((name) => ({ '@type': 'City', name })),
+  founder: { '@type': 'Person', name: instructors[0].fullName },
+  employee: instructors.map((i) => ({
+    '@type': 'Person',
+    name: i.fullName,
+    jobTitle: `${i.transmission} driving instructor (ADI)`,
+  })),
+  makesOffer: services.map((s) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name: s.title, description: s.text },
+  })),
+};
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {DRAFT && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="theme-color" content="#0b2545" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content={business.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {
+      DRAFT && (
+        <div class="draft-banner" role="note">
+          <strong>Draft for review.</strong> Highlighted text is sample content that still needs real details.
+        </div>
+      )
+    }
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <StickyBar />
+    <WaChooser />
+    <script>
+      import '../scripts/contact.ts';
+    </script>
+  </body>
+</html>
+
+<style>
+  .draft-banner {
+    background: #fff3b0;
+    border-bottom: 1px solid #e0b400;
+    color: #4a3b00;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 8px var(--gutter);
+  }
+</style>

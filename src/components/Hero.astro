@@ -1,0 +1,118 @@
+---
+import Icon from './Icon.astro';
+import CarArt from './CarArt.astro';
+import V from './V.astro';
+import { instructors, primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
+const partner = instructors[1];
+---
+
+<section class="hero" data-hero>
+  <div class="wrap grid">
+    <div class="copy">
+      <p class="eyebrow">Hadlow · Tonbridge · Tunbridge Wells</p>
+      <h1>Driving lessons in Hadlow, Tonbridge &amp; Tunbridge&nbsp;Wells</h1>
+      <p class="lead">
+        A husband-and-wife driving school. Manual lessons with Michael, automatic lessons with <V v={partner.firstName} />,
+        our female instructor. Patient teaching, pick-up from your door, and quick answers on WhatsApp.
+      </p>
+      <ul class="chips" aria-label="At a glance">
+        <li class="chip">Manual &amp; automatic</li>
+        <li class="chip chip--accent">Female instructor</li>
+        <li class="chip">7 days a week</li>
+        <li class="chip">Pick-up included</li>
+      </ul>
+      <div class="ctas">
+        <a
+          class="btn btn--wa"
+          href={waLink(primaryInstructor.phoneE164, whatsappText())}
+          data-wa-chooser
+          target="_blank"
+          rel="noopener"
+        >
+          <Icon name="whatsapp" />
+          WhatsApp us
+        </a>
+        <a class="btn btn--ghost" href={telLink(primaryInstructor.phoneE164)}>
+          <Icon name="phone" />
+          Call {primaryInstructor.phoneDisplay}
+        </a>
+      </div>
+      <p class="hint">Tell us your area and manual or automatic. We will send prices and free times.</p>
+    </div>
+    <div class="art">
+      <CarArt class="car" />
+      <p class="badge">
+        <Icon name="shield" size={20} />
+        Both instructors are DVSA Approved Driving Instructors (ADI)
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(32px, 6vw, 80px) clamp(48px, 7vw, 88px);
+  }
+  .grid {
+    display: grid;
+    gap: clamp(32px, 5vw, 56px);
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .grid {
+      grid-template-columns: 1.1fr 1fr;
+    }
+  }
+  .copy {
+    display: grid;
+    gap: 20px;
+  }
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  @media (max-width: 480px) {
+    .ctas .btn {
+      flex: 1 1 100%;
+    }
+  }
+  .hint {
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+  .art {
+    position: relative;
+  }
+  .car {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .badge {
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: -20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    max-width: calc(100% - 32px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--navy);
+    box-shadow: var(--shadow);
+  }
+  .badge :global(svg) {
+    color: var(--blue);
+    flex: none;
+  }
+</style>

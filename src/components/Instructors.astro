@@ -1,0 +1,148 @@
+---
+import Icon from './Icon.astro';
+import V from './V.astro';
+import { instructors, waLink, telLink, whatsappText } from '../data/site';
+const initials = (name: string) =>
+  name
+    .split(' ')
+    .map((p) => p[0])
+    .join('')
+    .slice(0, 2);
+---
+
+<section class="section section--alt" id="instructors">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Meet your instructors</p>
+      <h2>Two instructors, one small local school</h2>
+      <p class="lead">Choose the instructor and gearbox that suit you. Message either of us directly.</p>
+    </div>
+    <div class="cards">
+      {
+        instructors.map((i) => (
+          <article class="card">
+            <div class="top">
+              <div class={`avatar avatar--${i.id}`} aria-hidden="true">
+                {initials(i.fullName)}
+              </div>
+              <div>
+                <h3>
+                  <V v={i.fullName} />
+                </h3>
+                <p class="role">{i.role}</p>
+                <p class="adi">
+                  ADI no. <V v={i.adiNumber} />
+                </p>
+              </div>
+            </div>
+            <p class="bio">
+              <V v={i.bio} />
+            </p>
+            <ul class="chips">
+              {i.tags.map((t) => (
+                <li class:list={['chip', { 'chip--accent': t === 'Female instructor' }]}>{t}</li>
+              ))}
+            </ul>
+            <p class="car">
+              <Icon name="car" size={20} />
+              <V v={i.car} />
+            </p>
+            <div class="ctas">
+              <a
+                class="btn btn--wa"
+                href={waLink(i.phoneE164, whatsappText(i.transmission))}
+                target="_blank"
+                rel="noopener"
+              >
+                <Icon name="whatsapp" />
+                WhatsApp <V v={i.firstName} />
+              </a>
+              <a class="btn btn--ghost" href={telLink(i.phoneE164)} aria-label={`Call ${i.firstName}`}>
+                <Icon name="phone" />
+                <V v={i.phoneDisplay} />
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .cards {
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 860px) {
+    .cards {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .card {
+    display: grid;
+    gap: 18px;
+    align-content: start;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 3vw, 32px);
+  }
+  .top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .avatar {
+    flex: none;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #fff;
+    background: var(--blue);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px var(--blue);
+  }
+  .avatar--partner {
+    background: var(--red);
+    box-shadow: 0 0 0 2px var(--red);
+  }
+  .role {
+    font-weight: 600;
+    color: var(--navy);
+    margin-top: 4px;
+  }
+  .adi {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .bio {
+    color: var(--ink);
+  }
+  .car {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.98rem;
+  }
+  .car :global(svg) {
+    flex: none;
+    color: var(--blue);
+  }
+  .ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  @media (max-width: 480px) {
+    .ctas .btn {
+      flex: 1 1 100%;
+    }
+  }
+</style>

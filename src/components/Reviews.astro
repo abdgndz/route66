@@ -1,0 +1,81 @@
+---
+import Icon from './Icon.astro';
+import { DRAFT, reviews } from '../data/site';
+---
+
+{
+  reviews.length > 0 && (
+    <section class="section" id="reviews">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Reviews</p>
+          <h2>What our learners say</h2>
+          {DRAFT && (
+            <p class="note">
+              <mark class="ph">Sample reviews for layout only.</mark> They will be replaced with real Google reviews
+              before launch.
+            </p>
+          )}
+        </div>
+        <ul class="grid">
+          {reviews.map((r) => (
+            <li class="card">
+              <span class="stars" role="img" aria-label="5 out of 5 stars">
+                {[1, 2, 3, 4, 5].map(() => (
+                  <Icon name="star" size={18} />
+                ))}
+              </span>
+              <blockquote>
+                <p>{r.text}</p>
+              </blockquote>
+              <p class="who">
+                {DRAFT ? <mark class="ph">{r.name}</mark> : r.name}, {r.area}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .note {
+    color: var(--muted);
+  }
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  @media (min-width: 860px) {
+    .grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: grid;
+    gap: 14px;
+    align-content: start;
+  }
+  .stars {
+    display: flex;
+    gap: 2px;
+    color: var(--sign);
+  }
+  blockquote {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+  .who {
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+</style>

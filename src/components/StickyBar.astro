@@ -1,0 +1,105 @@
+---
+import Icon from './Icon.astro';
+import { primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
+---
+
+<div class="sticky" data-sticky aria-label="Quick contact">
+  <a class="btn btn--ghost call" href={telLink(primaryInstructor.phoneE164)}>
+    <Icon name="phone" />
+    Call
+  </a>
+  <a
+    class="btn btn--wa wa"
+    href={waLink(primaryInstructor.phoneE164, whatsappText())}
+    data-wa-chooser
+    target="_blank"
+    rel="noopener"
+  >
+    <Icon name="whatsapp" />
+    WhatsApp us
+  </a>
+</div>
+<a
+  class="fab"
+  href={waLink(primaryInstructor.phoneE164, whatsappText())}
+  data-wa-chooser
+  data-fab
+  target="_blank"
+  rel="noopener"
+  aria-label="Message us on WhatsApp"
+>
+  <Icon name="whatsapp" size={30} />
+</a>
+
+<style>
+  .sticky {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 10px;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    background: rgb(255 255 255 / 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid var(--border);
+    transform: translateY(110%);
+    transition: transform 0.25s ease;
+  }
+  .sticky.is-visible {
+    transform: none;
+  }
+  .sticky .btn {
+    min-height: 52px;
+    background-clip: padding-box;
+  }
+  .call {
+    background: var(--surface);
+  }
+  .fab {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .sticky {
+      display: none;
+    }
+    .fab {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 50;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--wa-dark);
+      color: #fff;
+      box-shadow: 0 10px 30px rgb(11 37 69 / 0.25);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    }
+    .fab.is-visible {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+    .fab:hover {
+      color: #fff;
+      background: #0b6532;
+    }
+  }
+  @media print {
+    .sticky,
+    .fab {
+      display: none !important;
+    }
+  }
+</style>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220"><path
+    d="M14 34 Q57 6 100 30 Q143 6 186 34 L183 122 Q176 184 100 214 Q24 184 17 122 Z"
+    fill="#1d4e89"></path>
+  <path
+    d="M27 41 Q60 20 100 40 Q140 20 173 41 L170.5 120 Q164 174 100 200 Q36 174 29.5 120 Z"
+    fill="#fff"></path>
+  <path d="M30.5 82 H169.5 L170.5 120 Q164 174 100 200 Q36 174 29.5 120 Z" fill="#c8102e"></path>
+  <path d="M30 76 H170 V84 H30 Z" fill="#1d4e89"></path>
+  <text
+    x="100"
+    y="70"
+    text-anchor="middle"
+    font-family="Barlow Condensed, Arial Narrow, sans-serif"
+    font-weight="800"
+    font-size="34"
+    letter-spacing="2"
+    fill="#1d4e89">ROUTE</text>
+  <text
+    x="100"
+    y="160"
+    text-anchor="middle"
+    font-family="Barlow Condensed, Arial Narrow, sans-serif"
+    font-weight="800"
+    font-size="86"
+    fill="#fff"
+    stroke="#0b2545"
+    stroke-width="3"
+    paint-order="stroke">66</text>
+  </svg>

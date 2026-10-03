@@ -1,0 +1,170 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Services from '../components/Services.astro';
+import Contact from '../components/Contact.astro';
+import { primaryInstructor, waLink, whatsappText } from '../data/site';
+
+const packages = [
+  {
+    title: 'Weekly lessons',
+    text: 'The usual way to learn. Regular two-hour lessons at the same time each week, so you build skill steadily and keep it.',
+    points: ['Manual or automatic', 'Pick-up and drop-off', 'Block booking offers available'],
+  },
+  {
+    title: 'Intensive and semi-intensive courses',
+    text: 'More hours over a shorter time for learners in a hurry. We plan the course around a realistic test date.',
+    points: ['Test date subject to DVSA availability', 'Theory test must be passed first', 'Honest advice on how many hours you need'],
+  },
+  {
+    title: 'Test-day car hire',
+    text: 'For confident drivers, people with a foreign licence, or anyone who needs a UK test car. Use our dual-control car for your test with a warm-up drive first.',
+    points: ['Warm-up drive before the test', 'Pick-up included', 'Extra lessons beforehand if you want them'],
+  },
+  {
+    title: 'After you pass',
+    text: 'Pass Plus, motorway lessons and confidence sessions for new drivers, plus refreshers for anyone returning to driving.',
+    points: ['Pass Plus', 'Motorway lessons', 'Refresher lessons'],
+  },
+];
+---
+
+<Base
+  title="Driving Lessons & Intensive Courses Tonbridge | Route 66 Driving School"
+  description="Weekly driving lessons, intensive courses, test-day car hire, Pass Plus and motorway lessons in Tonbridge, Hadlow and Tunbridge Wells. Manual and automatic. Message us for prices."
+>
+  <section class="section intro">
+    <div class="wrap">
+      <p class="eyebrow">Lessons &amp; courses</p>
+      <h1>Driving lessons and courses in Tonbridge &amp; Hadlow</h1>
+      <p class="lead">
+        Lessons are two hours long, one-to-one, in a dual-control car. Here is how each option works. For prices, send us a
+        WhatsApp and we will reply with the full cost for what you need.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <ul class="packages">
+        {
+          packages.map((p) => (
+            <li class="pack">
+              <h2>{p.title}</h2>
+              <p>{p.text}</p>
+              <ul class="points">
+                {p.points.map((pt) => (
+                  <li>
+                    <Icon name="check" size={20} />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap pricing">
+      <div>
+        <p class="eyebrow">Prices</p>
+        <h2>Clear prices, sent straight to you</h2>
+      </div>
+      <div class="pricing-body">
+        <p>
+          Prices depend on manual or automatic, the course you choose and block booking offers. Message us and we will send
+          our current prices. The price we quote is the full amount you pay, with nothing added later.
+        </p>
+        <ul class="points">
+          <li><Icon name="check" size={20} />Lessons are paid for in advance</li>
+          <li><Icon name="check" size={20} />48 hours notice to move or cancel a lesson for free</li>
+          <li><Icon name="check" size={20} />Early-morning test appointments may cost a little more</li>
+        </ul>
+        <a class="btn btn--wa" href={waLink(primaryInstructor.phoneE164, whatsappText())} data-wa-chooser target="_blank" rel="noopener">
+          <Icon name="whatsapp" />
+          Ask for prices on WhatsApp
+        </a>
+        <p class="small">Full details in our <a href="/terms">lesson terms</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <Services heading="Everything we teach" showLink={false} />
+  <Contact />
+</Base>
+
+<style>
+  .intro {
+    padding-bottom: clamp(32px, 5vw, 56px);
+  }
+  .intro .wrap {
+    display: grid;
+    gap: 18px;
+  }
+  .packages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 860px) {
+    .packages {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .pack {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: clamp(22px, 3vw, 32px);
+    display: grid;
+    gap: 14px;
+    align-content: start;
+  }
+  .pack h2 {
+    font-size: 1.8rem;
+  }
+  .pack > p {
+    color: var(--muted);
+  }
+  .points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  .points li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .points :global(svg) {
+    flex: none;
+    color: var(--wa-dark);
+    margin-top: 3px;
+  }
+  .pricing {
+    display: grid;
+    gap: 24px;
+  }
+  @media (min-width: 900px) {
+    .pricing {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 56px;
+    }
+  }
+  .pricing-body {
+    display: grid;
+    gap: 18px;
+    justify-items: start;
+  }
+  .small {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import V from '../components/V.astro';
+import { business } from '../data/site';
+---
+
+<Base title="Lesson terms | Route 66 Driving School" description="Booking, payment and cancellation terms for Route 66 Driving School lessons.">
+  <section class="section">
+    <div class="wrap prose">
+      <p class="eyebrow">Terms</p>
+      <h1>Lesson terms</h1>
+      <p>Last updated: 3 October 2026. These terms apply to all lessons and test-day bookings with {business.name}.</p>
+
+      <h2>Before your first lesson</h2>
+      <ul>
+        <li>You must be 17 or over and hold a valid provisional (or full) driving licence.</li>
+        <li>Please show us your licence at the first lesson.</li>
+        <li>You must meet the eyesight standard: be able to read a number plate from 20 metres, with glasses or lenses if you need them.</li>
+      </ul>
+
+      <h2>Lessons and payment</h2>
+      <ul>
+        <li>Lessons are two hours long unless we agree otherwise.</li>
+        <li>Lessons are paid for in advance. Block bookings are paid when booked.</li>
+        <li>The price we quote is the full price. There are no hidden extras.</li>
+        <li>Lesson time starts and ends at the agreed pick-up point.</li>
+      </ul>
+
+      <h2>Cancelling or moving a lesson</h2>
+      <ul>
+        <li>Give us at least 48 hours notice and we will move your lesson or refund it in full.</li>
+        <li>Lessons cancelled with less than 48 hours notice, or missed, are normally charged in full.</li>
+        <li>
+          If we have to cancel, we will give you as much notice as we can and offer another time or a full refund. If we
+          cancel with less than 48 hours notice, your next lesson is free of charge for the same length.
+        </li>
+      </ul>
+
+      <h2>Block bookings and refunds</h2>
+      <p>Unused hours from a block booking are refunded at the standard hourly rate, minus the discount already given.</p>
+
+      <h2>Driving tests in our car</h2>
+      <ul>
+        <li>You book and pay DVSA for your test. Please tell us your test date and time before booking so we can confirm the car is free.</li>
+        <li>
+          We may decline to take you to test if we believe you are not yet safe to pass, or if the car is unfit due to
+          circumstances outside our control. If we decline, we will explain why.
+        </li>
+        <li>
+          If your test is cancelled by DVSA, any refund for the test fee comes from DVSA. Our test-day charge will be
+          moved to your new date.
+        </li>
+      </ul>
+
+      <h2>Safety and conduct</h2>
+      <ul>
+        <li>We will not give a lesson if we believe you are under the influence of alcohol or drugs. The lesson will be charged.</li>
+        <li>Lessons are given in dual-control cars insured for driving tuition.</li>
+      </ul>
+
+      <h2>Complaints</h2>
+      <p>
+        If something is not right, please tell us first and we will try to sort it out: <a href={`mailto:${business.email}`}
+          ><V v={business.email} /></a
+        >. If you are still not happy, you can contact Citizens Advice, or report concerns about an instructor's conduct to
+        DVSA at <a href="mailto:instructorconduct@dvsa.gov.uk">instructorconduct@dvsa.gov.uk</a>.
+      </p>
+    </div>
+  </section>
+</Base>

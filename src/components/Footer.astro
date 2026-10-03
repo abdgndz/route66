@@ -1,0 +1,133 @@
+---
+import LogoMark from './LogoMark.astro';
+import V from './V.astro';
+import { business, instructors, telLink, areas } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="checker" aria-hidden="true"></div>
+  <div class="wrap grid">
+    <div class="col brand">
+      <LogoMark size={56} />
+      <p class="name">{business.name}</p>
+      <p>Driving lessons in {business.locality}, Tonbridge, Tunbridge Wells and across West Kent.</p>
+    </div>
+    <div class="col">
+      <h2 class="h">Contact</h2>
+      <ul>
+        {
+          instructors.map((i) => (
+            <li>
+              <V v={i.firstName} /> ({i.transmission.toLowerCase()}):{' '}
+              <a href={telLink(i.phoneE164)}>
+                <V v={i.phoneDisplay} />
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={`mailto:${business.email}`}><V v={business.email} /></a>
+        </li>
+        <li>{business.hours}</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h2 class="h">Pages</h2>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/lessons">Lessons</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Lesson terms</a></li>
+      </ul>
+    </div>
+    <div class="col">
+      <h2 class="h">Areas</h2>
+      <ul class="areas">{areas.map((a) => <li>{a}</li>)}</ul>
+    </div>
+  </div>
+  <div class="wrap legal">
+    <p>
+      {business.name} is a trading name of <V v={business.owner} />, {business.legalForm}.
+      Address: <V v={business.address} />.
+    </p>
+    <p>© {year} {business.name}. All instructors are DVSA Approved Driving Instructors (ADI).</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--navy);
+    color: #d9e1ee;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+    font-size: 0.98rem;
+  }
+  .site-footer .checker {
+    background: conic-gradient(#fff 25%, transparent 0 50%, #fff 0 75%, transparent 0) 0 0 / 10px 10px;
+    opacity: 0.18;
+  }
+  .grid {
+    display: grid;
+    gap: 32px;
+    padding-block: 56px 32px;
+  }
+  @media (min-width: 760px) {
+    .grid {
+      grid-template-columns: 1.4fr 1.2fr 0.8fr 1.2fr;
+    }
+    .site-footer {
+      padding-bottom: 24px;
+    }
+  }
+  .brand {
+    display: grid;
+    gap: 10px;
+    align-content: start;
+  }
+  .name {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #fff;
+  }
+  .h {
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+  a {
+    color: #fff;
+  }
+  a:hover {
+    color: #ffd6dc;
+  }
+  .areas {
+    color: #c3cee0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
+  .areas li {
+    white-space: nowrap;
+  }
+  .legal {
+    border-top: 1px solid rgb(255 255 255 / 0.12);
+    padding-block: 20px;
+    display: grid;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #b3c0d6;
+  }
+  .site-footer :global(mark.ph) {
+    color: #2b2100;
+  }
+</style>
