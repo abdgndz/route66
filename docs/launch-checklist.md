@@ -4,7 +4,7 @@
 
 1. Log in to Cloudflare once from the terminal: `npx wrangler login`. Use the Cloudflare account that already holds abdgndz.com.
 2. Deploy from this folder: `npm run deploy`.
-3. You get a preview URL like `route66-driving-school.<subdomain>.workers.dev`. Send it to Michael.
+3. Preview URL: https://route66-driving-school.route66-driving-school.workers.dev (Cloudflare account gndztasarim@gmail.com, the one that holds abdgndz.com).
 
 While `DRAFT = true`, the preview is not indexed by search engines.
 
