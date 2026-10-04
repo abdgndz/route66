@@ -66,8 +66,9 @@ export const instructors: Instructor[] = [
     label: 'Female instructor',
     role: 'DVSA Approved Driving Instructor (ADI)',
     transmission: 'Automatic',
-    phoneDisplay: ph('01234 566789'),
-    phoneE164: ph('441234566789'),
+    // One school number for both instructors for now.
+    phoneDisplay: '07592 137400',
+    phoneE164: '447592137400',
     car: ph('Automatic car, dual controls (model on request)'),
     bio: ph(
       "Relaxed and encouraging, and she teaches in an automatic. A popular choice for nervous learners and anyone who'd rather not worry about gears and clutch control.",

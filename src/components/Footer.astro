@@ -1,7 +1,7 @@
 ---
 import LogoMark from './LogoMark.astro';
 import V from './V.astro';
-import { business, instructors, telLink, areas } from '../data/site';
+import { business, primaryInstructor, telLink, areas } from '../data/site';
 const year = new Date().getFullYear();
 ---
 
@@ -16,16 +16,9 @@ const year = new Date().getFullYear();
     <div class="col">
       <h2 class="h">Contact</h2>
       <ul>
-        {
-          instructors.map((i) => (
-            <li>
-              {i.label} ({i.transmission.toLowerCase()}):{' '}
-              <a href={telLink(i.phoneE164)}>
-                <V v={i.phoneDisplay} />
-              </a>
-            </li>
-          ))
-        }
+        <li>
+          Phone &amp; WhatsApp: <a href={telLink(primaryInstructor.phoneE164)}>{primaryInstructor.phoneDisplay}</a>
+        </li>
         <li>
           <a href={`mailto:${business.email}`}><V v={business.email} /></a>
         </li>

@@ -1,7 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import V from './V.astro';
-import { business, instructors, primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
+import { business, primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
 ---
 
 <section class="section contact" id="contact">
@@ -26,19 +26,12 @@ import { business, instructors, primaryInstructor, waLink, telLink, whatsappText
         WhatsApp us
       </a>
       <ul class="lines">
-        {
-          instructors.map((i) => (
-            <li>
-              <Icon name="phone" size={18} />
-              <span>
-                {i.label} ({i.transmission.toLowerCase()}):{' '}
-                <a href={telLink(i.phoneE164)}>
-                  <V v={i.phoneDisplay} />
-                </a>
-              </span>
-            </li>
-          ))
-        }
+        <li>
+          <Icon name="phone" size={18} />
+          <span>
+            Phone &amp; WhatsApp: <a href={telLink(primaryInstructor.phoneE164)}>{primaryInstructor.phoneDisplay}</a>
+          </span>
+        </li>
         <li>
           <Icon name="mail" size={18} />
           <a href={`mailto:${business.email}`}><V v={business.email} /></a>
