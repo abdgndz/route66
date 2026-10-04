@@ -8,11 +8,12 @@
 
 While `DRAFT = true`, the preview is not indexed by search engines.
 
-## B. Going live (after Michael's corrections)
+## B. Going live (after the owner's corrections)
 
 ### 1. Content
 
-- Replace every highlighted value in `src/data/site.ts`: names, ADI numbers, phone numbers, address, email, bios and cars.
+- ADI numbers are never shown on the site (fraud risk). Instructors are shown without names.
+- Replace every highlighted value in `src/data/site.ts`: phone numbers, address, email, bios and cars.
 - Delete the sample reviews.
 - Set `DRAFT = false`.
 - Run `npm test`, then `npm run deploy`.

@@ -24,9 +24,6 @@ import { instructors, waLink, telLink, whatsappText } from '../data/site';
                   {i.label} · {i.transmission}
                 </h3>
                 <p class="role">{i.role}</p>
-                <p class="adi">
-                  ADI no. <V v={i.adiNumber} />
-                </p>
               </div>
             </div>
             <p class="bio">
@@ -110,10 +107,6 @@ import { instructors, waLink, telLink, whatsappText } from '../data/site';
     font-weight: 600;
     color: var(--navy);
     margin-top: 4px;
-  }
-  .adi {
-    color: var(--muted);
-    font-size: 0.95rem;
   }
   .bio {
     color: var(--ink);

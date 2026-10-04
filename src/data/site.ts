@@ -22,7 +22,6 @@ export interface Instructor {
   label: string;
   role: string;
   transmission: Transmission;
-  adiNumber: string;
   phoneDisplay: string;
   /** E.164 without the plus, e.g. 447592137400 */
   phoneE164: string;
@@ -54,7 +53,6 @@ export const instructors: Instructor[] = [
     label: 'Male instructor',
     role: 'DVSA Approved Driving Instructor (ADI)',
     transmission: 'Manual',
-    adiNumber: ph('01234567'),
     phoneDisplay: '07592 137400',
     phoneE164: '447592137400',
     car: ph('Manual car, dual controls (model on request)'),
@@ -68,7 +66,6 @@ export const instructors: Instructor[] = [
     label: 'Female instructor',
     role: 'DVSA Approved Driving Instructor (ADI)',
     transmission: 'Automatic',
-    adiNumber: ph('01234568'),
     phoneDisplay: ph('01234 566789'),
     phoneE164: ph('441234566789'),
     car: ph('Automatic car, dual controls (model on request)'),
