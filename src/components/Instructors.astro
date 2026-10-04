@@ -2,12 +2,6 @@
 import Icon from './Icon.astro';
 import V from './V.astro';
 import { instructors, waLink, telLink, whatsappText } from '../data/site';
-const initials = (name: string) =>
-  name
-    .split(' ')
-    .map((p) => p[0])
-    .join('')
-    .slice(0, 2);
 ---
 
 <section class="section section--alt" id="instructors">
@@ -15,7 +9,7 @@ const initials = (name: string) =>
     <div class="section-head">
       <p class="eyebrow">Meet your instructors</p>
       <h2>Two instructors, one small local school</h2>
-      <p class="lead">Manual with Michael or automatic with {instructors[1].firstName}. Message whichever of us you like.</p>
+      <p class="lead">Manual with our male instructor, automatic with our female instructor. Message whichever suits you.</p>
     </div>
     <div class="cards">
       {
@@ -23,11 +17,11 @@ const initials = (name: string) =>
           <article class="card">
             <div class="top">
               <div class={`avatar avatar--${i.id}`} aria-hidden="true">
-                {initials(i.fullName)}
+                {i.transmission === 'Manual' ? 'M' : 'A'}
               </div>
               <div>
                 <h3>
-                  <V v={i.fullName} />
+                  {i.label} · {i.transmission}
                 </h3>
                 <p class="role">{i.role}</p>
                 <p class="adi">
@@ -55,9 +49,9 @@ const initials = (name: string) =>
                 rel="noopener"
               >
                 <Icon name="whatsapp" />
-                WhatsApp <V v={i.firstName} />
+                WhatsApp
               </a>
-              <a class="btn btn--ghost" href={telLink(i.phoneE164)} aria-label={`Call ${i.firstName} on ${i.phoneDisplay}`}>
+              <a class="btn btn--ghost" href={telLink(i.phoneE164)} aria-label={`Call the ${i.label.toLowerCase()} on ${i.phoneDisplay}`}>
                 <Icon name="phone" />
                 <V v={i.phoneDisplay} />
               </a>
@@ -108,7 +102,7 @@ const initials = (name: string) =>
     border: 3px solid #fff;
     box-shadow: 0 0 0 2px var(--blue);
   }
-  .avatar--partner {
+  .avatar--female {
     background: var(--red);
     box-shadow: 0 0 0 2px var(--red);
   }

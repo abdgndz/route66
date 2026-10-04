@@ -1,10 +1,11 @@
 // Single source of truth for every business fact shown on the site.
-// Michael's corrections should only ever need to touch this file.
+// The owner's corrections should only ever need to touch this file.
+// No personal names are shown: instructors appear as male / female instructor.
 
 /** While true: draft banner, highlighted placeholders, noindex everywhere. */
 export const DRAFT = true;
 
-// Values registered here are highlighted on the draft so Michael can see
+// Values registered here are highlighted on the draft so the owner can see
 // exactly what still needs his real information.
 const placeholders = new Set<string>();
 const ph = <T extends string>(value: T): T => {
@@ -16,9 +17,9 @@ export const isPlaceholder = (value: string) => DRAFT && placeholders.has(value)
 export type Transmission = 'Manual' | 'Automatic';
 
 export interface Instructor {
-  id: 'michael' | 'partner';
-  firstName: string;
-  fullName: string;
+  id: 'male' | 'female';
+  /** Shown instead of a name, e.g. "Male instructor". */
+  label: string;
   role: string;
   transmission: Transmission;
   adiNumber: string;
@@ -38,7 +39,8 @@ export const business = {
   locality: 'Hadlow',
   region: 'Kent',
   postcode: ph('TN11 0XX'),
-  owner: ph('Michael Doe'),
+  /** Legally required for a sole trader's trading name; footer only. */
+  owner: ph("Owner's full name"),
   legalForm: 'sole trader',
   address: ph('1 Sample Lane, Hadlow, Tonbridge, Kent TN11 0XX'),
   email: ph('lessons@route66drivingschool.co.uk'),
@@ -48,9 +50,8 @@ export const business = {
 
 export const instructors: Instructor[] = [
   {
-    id: 'michael',
-    firstName: 'Michael',
-    fullName: ph('Michael Doe'),
+    id: 'male',
+    label: 'Male instructor',
     role: 'DVSA Approved Driving Instructor (ADI)',
     transmission: 'Manual',
     adiNumber: ph('01234567'),
@@ -58,14 +59,13 @@ export const instructors: Instructor[] = [
     phoneE164: '447592137400',
     car: ph('Manual car, dual controls (model on request)'),
     bio: ph(
-      'Calm, patient and straight-talking. Michael has taught learners across Kent and knows the local test routes well, from the Tunbridge Wells roundabouts to the lanes around Hadlow.',
+      'Calm, patient and straight-talking, with years of teaching across Kent and a good knowledge of the local test routes, from the Tunbridge Wells roundabouts to the lanes around Hadlow.',
     ),
     tags: ['Manual', 'Motorway', 'Pass Plus', 'Test-day car hire'],
   },
   {
-    id: 'partner',
-    firstName: ph('Sarah'),
-    fullName: ph('Sarah Doe'),
+    id: 'female',
+    label: 'Female instructor',
     role: 'DVSA Approved Driving Instructor (ADI)',
     transmission: 'Automatic',
     adiNumber: ph('01234568'),
@@ -75,12 +75,11 @@ export const instructors: Instructor[] = [
     bio: ph(
       "Relaxed and encouraging, and she teaches in an automatic. A popular choice for nervous learners and anyone who'd rather not worry about gears and clutch control.",
     ),
-    tags: ['Automatic', 'Female instructor', 'Nervous drivers', 'Refreshers'],
+    tags: ['Automatic', 'Nervous drivers', 'Refreshers'],
   },
 ];
 
 export const primaryInstructor = instructors[0];
-const partnerName = instructors[1].firstName;
 
 export const services = [
   {
@@ -93,7 +92,7 @@ export const services = [
   },
   {
     title: 'Manual and automatic',
-    text: `Manual with Michael, automatic with ${partnerName}. Not sure which suits you? Ask and we'll talk it through.`,
+    text: "Manual with our male instructor, automatic with our female instructor. Not sure which suits you? Ask and we'll talk it through.",
   },
   {
     title: 'Intensive courses',
@@ -167,12 +166,12 @@ export const reviews: Review[] = DRAFT
       {
         name: 'Sample review',
         area: 'Tonbridge',
-        text: 'Passed first time at Tunbridge Wells. Michael kept me calm and we practised the tricky roundabouts until they felt easy.',
+        text: 'Passed first time at Tunbridge Wells. My instructor kept me calm and we practised the tricky roundabouts until they felt easy.',
       },
       {
         name: 'Sample review',
         area: 'Hadlow',
-        text: `I was really nervous after a bad experience with another instructor. ${partnerName} was patient from the first lesson. Could not recommend her more.`,
+        text: 'I was really nervous after a bad experience with another instructor. She was patient from the first lesson. Could not recommend her more.',
       },
       {
         name: 'Sample review',

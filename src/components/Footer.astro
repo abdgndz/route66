@@ -19,7 +19,7 @@ const year = new Date().getFullYear();
         {
           instructors.map((i) => (
             <li>
-              <V v={i.firstName} /> ({i.transmission.toLowerCase()}):{' '}
+              {i.label} ({i.transmission.toLowerCase()}):{' '}
               <a href={telLink(i.phoneE164)}>
                 <V v={i.phoneDisplay} />
               </a>

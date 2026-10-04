@@ -39,12 +39,6 @@ const jsonLd = {
     addressCountry: 'GB',
   },
   areaServed: areas.map((name) => ({ '@type': 'Place', name })),
-  founder: { '@type': 'Person', name: instructors[0].fullName },
-  employee: instructors.map((i) => ({
-    '@type': 'Person',
-    name: i.fullName,
-    jobTitle: `${i.transmission} driving instructor (ADI)`,
-  })),
   makesOffer: services.map((s) => ({
     '@type': 'Offer',
     itemOffered: { '@type': 'Service', name: s.title, description: s.text },

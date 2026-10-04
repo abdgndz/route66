@@ -1,19 +1,18 @@
 ---
 import Icon from './Icon.astro';
-import CarArt from './CarArt.astro';
-import V from './V.astro';
-import { instructors, primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
-const partner = instructors[1];
+import { Picture } from 'astro:assets';
+import newCar from '../assets/new-car.jpg';
+import { primaryInstructor, waLink, telLink, whatsappText } from '../data/site';
 ---
 
 <section class="hero" data-hero>
   <div class="wrap grid">
     <div class="copy">
-      <p class="eyebrow">Husband-and-wife driving school · West Kent</p>
+      <p class="eyebrow">Local driving school · West Kent</p>
       <h1>Driving lessons in Hadlow, Tonbridge &amp; Tunbridge&nbsp;Wells</h1>
       <p class="lead">
-        Michael teaches manual, <V v={partner.firstName} /> teaches automatic. Patient lessons, pick-up from your door,
-        and quick replies on WhatsApp.
+        Manual lessons with our male instructor, automatic lessons with our female instructor. Patient teaching,
+        pick-up from your door, and quick replies on WhatsApp.
       </p>
       <ul class="chips" aria-label="At a glance">
         <li class="chip">Manual &amp; automatic</li>
@@ -40,7 +39,16 @@ const partner = instructors[1];
       <p class="hint">Tell us your area and manual or automatic. We'll send you prices and our available times.</p>
     </div>
     <div class="art">
-      <CarArt class="car" />
+      <Picture
+        src={newCar}
+        formats={['avif', 'webp']}
+        widths={[480, 720, 1010]}
+        sizes="(min-width: 960px) 520px, 100vw"
+        alt="Our new white tuition car with a red roof and racing stripe, and a 66 door number"
+        class="car"
+        loading="eager"
+        fetchpriority="high"
+      />
       <p class="badge">
         <Icon name="shield" size={20} />
         Both of us are DVSA Approved Driving Instructors (ADIs)
@@ -85,9 +93,11 @@ const partner = instructors[1];
   .art {
     position: relative;
   }
-  .car {
+  .art :global(.car) {
     width: 100%;
     height: auto;
+    aspect-ratio: 1010 / 941;
+    object-fit: cover;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);

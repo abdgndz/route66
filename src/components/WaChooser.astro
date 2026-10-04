@@ -1,6 +1,5 @@
 ---
 import Icon from './Icon.astro';
-import V from './V.astro';
 import { instructors, waLink, whatsappText } from '../data/site';
 ---
 
@@ -22,9 +21,9 @@ import { instructors, waLink, whatsappText } from '../data/site';
             </span>
             <span class="txt">
               <strong>
-                <V v={i.firstName} /> · {i.transmission}
+                {i.label} · {i.transmission}
               </strong>
-              <span>{i.id === 'partner' ? 'Automatic lessons, nervous drivers, refreshers' : 'Manual lessons, motorway, test-day car hire'}</span>
+              <span>{i.id === 'female' ? 'Automatic lessons, nervous drivers, refreshers' : 'Manual lessons, motorway, test-day car hire'}</span>
             </span>
             <Icon name="arrow" size={20} class="go" />
           </a>

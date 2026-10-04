@@ -31,7 +31,7 @@ import { business, instructors, primaryInstructor, waLink, telLink, whatsappText
             <li>
               <Icon name="phone" size={18} />
               <span>
-                <V v={i.firstName} /> ({i.transmission.toLowerCase()}):{' '}
+                {i.label} ({i.transmission.toLowerCase()}):{' '}
                 <a href={telLink(i.phoneE164)}>
                   <V v={i.phoneDisplay} />
                 </a>
