@@ -23,7 +23,7 @@ export interface Instructor {
   role: string;
   transmission: Transmission;
   phoneDisplay: string;
-  /** E.164 without the plus, e.g. 447592137400 */
+  /** E.164 without the plus, e.g. 447432191584 */
   phoneE164: string;
   car: string;
   bio: string;
@@ -53,8 +53,8 @@ export const instructors: Instructor[] = [
     label: 'Male instructor',
     role: 'DVSA Approved Driving Instructor (ADI)',
     transmission: 'Manual',
-    phoneDisplay: '07592 137400',
-    phoneE164: '447592137400',
+    phoneDisplay: '07432 191584',
+    phoneE164: '447432191584',
     car: ph('Manual car, dual controls (model on request)'),
     bio: ph(
       'Calm, patient and straight-talking, with years of teaching across Kent and a good knowledge of the local test routes, from the Tunbridge Wells roundabouts to the lanes around Hadlow.',
@@ -67,8 +67,8 @@ export const instructors: Instructor[] = [
     role: 'DVSA Approved Driving Instructor (ADI)',
     transmission: 'Automatic',
     // One school number for both instructors for now.
-    phoneDisplay: '07592 137400',
-    phoneE164: '447592137400',
+    phoneDisplay: '07432 191584',
+    phoneE164: '447432191584',
     car: ph('Automatic car, dual controls (model on request)'),
     bio: ph(
       "Relaxed and encouraging, and she teaches in an automatic. A popular choice for nervous learners and anyone who'd rather not worry about gears and clutch control.",
