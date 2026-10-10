@@ -3,7 +3,7 @@
 // No personal names are shown: instructors appear as male / female instructor.
 
 /** While true: draft banner, highlighted placeholders, noindex everywhere. */
-export const DRAFT = true;
+export const DRAFT = false;
 
 // Values registered here are highlighted on the draft so the owner can see
 // exactly what still needs his real information.
@@ -37,12 +37,9 @@ export const business = {
   url: 'https://route66drivingschool.co.uk',
   locality: 'Hadlow',
   region: 'Kent',
-  postcode: ph('TN11 0XX'),
-  /** Legally required for a sole trader's trading name; footer only. */
-  owner: ph("Owner's full name"),
+  postcode: 'TN11',
   legalForm: 'sole trader',
-  address: ph('1 Sample Lane, Hadlow, Tonbridge, Kent TN11 0XX'),
-  email: ph('lessons@route66drivingschool.co.uk'),
+  email: 'lessons@route66drivingschool.co.uk',
   hours: 'Lessons 7 days a week. Times to suit you.',
   founded: '2026',
 };
@@ -152,32 +149,24 @@ export const areas = [
 
 export const testCentres = ['Tunbridge Wells', 'Sevenoaks', 'Maidstone'];
 
-export interface Review {
-  name: string;
-  area: string;
-  text: string;
-}
-
-/** SAMPLE reviews for the draft only. Must be deleted before launch. */
-export const reviews: Review[] = DRAFT
-  ? [
-      {
-        name: 'Sample review',
-        area: 'Tonbridge',
-        text: 'Passed first time at Tunbridge Wells. My instructor kept me calm and we practised the tricky roundabouts until they felt easy.',
-      },
-      {
-        name: 'Sample review',
-        area: 'Hadlow',
-        text: 'I was really nervous after a bad experience with another instructor. She was patient from the first lesson. Could not recommend her more.',
-      },
-      {
-        name: 'Sample review',
-        area: 'Kings Hill',
-        text: 'Hired the car for my test after driving abroad for years. Two lessons and the test-day warm-up was all I needed.',
-      },
-    ]
-  : [];
+/**
+ * Why learners pick us. These are the school's own words, not pupil reviews:
+ * only add pupil reviews here once real ones exist (DMCC Act 2024).
+ */
+export const reasons = [
+  {
+    title: 'Tricky roundabouts? Not for long',
+    text: 'We practise the junctions and roundabouts on the Tunbridge Wells, Sevenoaks and Maidstone test routes until they feel easy.',
+  },
+  {
+    title: 'Nervous? We get it',
+    text: "Had a bad experience with another instructor, or just anxious behind the wheel? We're calm and patient from the very first lesson.",
+  },
+  {
+    title: 'Driven abroad for years?',
+    text: 'You may only need a couple of lessons on UK roads and a warm-up before your test in our car.',
+  },
+];
 
 export const faqs = [
   {

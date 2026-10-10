@@ -71,12 +71,18 @@ test('banned marketing claims are absent', async ({ page }) => {
   }
 });
 
-test('draft is hidden from search engines', async ({ page, request }) => {
+test('live site is open to search engines, with no draft leftovers', async ({ page, request }) => {
   await page.goto('/');
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
-  await expect(page.locator('.draft-banner')).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+  await expect(page.locator('.draft-banner')).toHaveCount(0);
+  await expect(page.locator('mark.ph')).toHaveCount(0);
   const robots = await (await request.get('/robots.txt')).text();
-  expect(robots).toContain('Disallow: /');
+  expect(robots).toContain('Allow: /');
+  expect(robots).toContain('Sitemap: https://route66drivingschool.co.uk/sitemap-index.xml');
+  const res = await request.get('/');
+  expect(res.headers()['x-robots-tag']).toBeUndefined();
+  const body = (await page.locator('body').innerText()).toLowerCase();
+  for (const leftover of ['sample', 'placeholder', 'owner\'s full name', 'tn11 0xx']) expect(body).not.toContain(leftover);
 });
 
 test('sitemap and 404 work', async ({ request, page }) => {

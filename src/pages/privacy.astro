@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import V from '../components/V.astro';
-import { business } from '../data/site';
+import { business, primaryInstructor } from '../data/site';
 ---
 
 <Base title="Privacy notice | Route 66 Driving School" description="How Route 66 Driving School uses your personal information.">
@@ -13,8 +13,8 @@ import { business } from '../data/site';
 
       <h2>Who we are</h2>
       <p>
-        {business.name} is run by <V v={business.owner} />, a {business.legalForm}, who is the data controller for the
-        information described here. Address: <V v={business.address} />. Email:
+        {business.name} is run by a {business.legalForm} based in {business.locality}, {business.region}, who is the data
+        controller for the information described here. Phone and WhatsApp: {primaryInstructor.phoneDisplay}. Email:
         <a href={`mailto:${business.email}`}><V v={business.email} /></a>.
       </p>
 
