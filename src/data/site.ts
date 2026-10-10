@@ -39,7 +39,6 @@ export const business = {
   region: 'Kent',
   postcode: 'TN11',
   legalForm: 'sole trader',
-  email: 'lessons@route66drivingschool.co.uk',
   hours: 'Lessons 7 days a week. Times to suit you.',
   founded: '2026',
 };

@@ -1,12 +1,14 @@
 // Serves the static site on one canonical origin: https, bare domain.
 interface Env {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
+  /** Set by `wrangler dev --var LOCAL:1`; dev rewrites URLs to the live host. */
+  LOCAL?: string;
 }
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
-    if (url.protocol === 'http:' || url.hostname.startsWith('www.')) {
+    if (!env.LOCAL && (url.protocol === 'http:' || url.hostname.startsWith('www.'))) {
       url.protocol = 'https:';
       url.hostname = url.hostname.replace(/^www\./, '');
       return Response.redirect(url.toString(), 301);

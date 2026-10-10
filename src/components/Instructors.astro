@@ -16,15 +16,10 @@ import { instructors, waLink, telLink, whatsappText } from '../data/site';
         instructors.map((i) => (
           <article class="card">
             <div class="top">
-              <div class={`avatar avatar--${i.id}`} aria-hidden="true">
-                {i.transmission === 'Manual' ? 'M' : 'A'}
-              </div>
-              <div>
-                <h3>
-                  {i.label} · {i.transmission}
-                </h3>
-                <p class="role">{i.role}</p>
-              </div>
+              <h3>
+                {i.label} · {i.transmission}
+              </h3>
+              <p class="role">{i.role}</p>
             </div>
             <p class="bio">
               <V v={i.bio} />
@@ -70,38 +65,15 @@ import { instructors, waLink, telLink, whatsappText } from '../data/site';
       grid-template-columns: 1fr 1fr;
     }
   }
+  /* Column layout so the buttons sit at the bottom of both cards. */
   .card {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 18px;
-    align-content: start;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: clamp(20px, 3vw, 32px);
-  }
-  .top {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-  }
-  .avatar {
-    flex: none;
-    width: 76px;
-    height: 76px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-family: var(--font-head);
-    font-weight: 800;
-    font-size: 1.8rem;
-    color: #fff;
-    background: var(--blue);
-    border: 3px solid #fff;
-    box-shadow: 0 0 0 2px var(--blue);
-  }
-  .avatar--female {
-    background: var(--red);
-    box-shadow: 0 0 0 2px var(--red);
   }
   .role {
     font-weight: 600;
@@ -123,6 +95,7 @@ import { instructors, waLink, telLink, whatsappText } from '../data/site';
     color: var(--blue);
   }
   .ctas {
+    margin-top: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;

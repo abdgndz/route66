@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import V from '../components/V.astro';
-import { business } from '../data/site';
+import { business, primaryInstructor } from '../data/site';
 ---
 
 <Base title="Lesson terms | Route 66 Driving School" description="Booking, payment and cancellation terms for Route 66 Driving School lessons.">
@@ -28,7 +28,7 @@ import { business } from '../data/site';
 
       <h2>Your right to cancel within 14 days</h2>
       <p>
-        If you book by phone, WhatsApp or email, you can cancel within 14 days of booking for a full refund. If you ask us
+        If you book by phone or WhatsApp, you can cancel within 14 days of booking for a full refund. If you ask us
         to start lessons within those 14 days and then cancel, we'll refund what you paid minus the lessons you've already
         had.
       </p>
@@ -79,9 +79,8 @@ import { business } from '../data/site';
 
       <h2>Complaints</h2>
       <p>
-        If something isn't right, please tell us first and we'll try to sort it out: <a href={`mailto:${business.email}`}
-          ><V v={business.email} /></a
-        >. If you're still not happy, you can contact Citizens Advice, or report concerns about an instructor's conduct to
+        If something isn't right, please tell us first and we'll try to sort it out by phone or WhatsApp on
+        {primaryInstructor.phoneDisplay}. If you're still not happy, you can contact Citizens Advice, or report concerns about an instructor's conduct to
         DVSA at <a href="mailto:instructorconduct@dvsa.gov.uk">instructorconduct@dvsa.gov.uk</a>.
       </p>
 

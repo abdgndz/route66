@@ -14,14 +14,13 @@ import { business, primaryInstructor } from '../data/site';
       <h2>Who we are</h2>
       <p>
         {business.name} is run by a {business.legalForm} based in {business.locality}, {business.region}, who is the data
-        controller for the information described here. Phone and WhatsApp: {primaryInstructor.phoneDisplay}. Email:
-        <a href={`mailto:${business.email}`}><V v={business.email} /></a>.
+        controller for the information described here. Phone and WhatsApp: {primaryInstructor.phoneDisplay}.
       </p>
 
       <h2>What we collect and why</h2>
       <ul>
         <li>
-          <strong>When you contact us</strong> by WhatsApp, phone or email: your name, phone number and anything you
+          <strong>When you contact us</strong> by WhatsApp or phone: your name, phone number and anything you
           tell us, such as your area and availability. We use this to reply and arrange lessons. Lawful basis: taking
           steps at your request before a contract.
         </li>
@@ -47,8 +46,7 @@ import { business, primaryInstructor } from '../data/site';
 
       <h2>Who we share it with</h2>
       <p>
-        We don't sell your information. We use a small number of service providers: Cloudflare (website hosting and
-        email forwarding) and WhatsApp (Meta) if you message us there. We may share details with DVSA when booking or
+        We don't sell your information. We use a small number of service providers: Cloudflare (website hosting) and WhatsApp (Meta) if you message us there. We may share details with DVSA when booking or
         managing driving tests, or where the law requires it.
       </p>
       <p>

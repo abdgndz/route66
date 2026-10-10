@@ -5,7 +5,7 @@ export default defineConfig({
   reporter: 'list',
   use: { baseURL: 'http://127.0.0.1:4322' },
   webServer: {
-    command: 'npm run build && npx wrangler dev --port 4322 --ip 127.0.0.1',
+    command: 'npm run build && npx wrangler dev --port 4322 --ip 127.0.0.1 --var LOCAL:1',
     url: 'http://127.0.0.1:4322',
     reuseExistingServer: false,
     timeout: 120_000,
