@@ -1,12 +1,11 @@
 # Launch checklist
 
-## A. Draft preview (now)
+## Status (10 Oct 2026): LIVE
 
-1. Log in to Cloudflare once from the terminal: `npx wrangler login`. Use the Cloudflare account that already holds abdgndz.com.
-2. Deploy from this folder: `npm run deploy`.
-3. Preview URL: https://route66-driving-school.route66-driving-school.workers.dev (Cloudflare account gndztasarim@gmail.com, the one that holds abdgndz.com).
-
-While `DRAFT = true`, the preview is not indexed by search engines.
+- Live at https://route66drivingschool.co.uk. Cloudflare account **abdgndz34@gmail.com** (same Google login as GoDaddy).
+- Deploy: `npx wrangler login` with that account, then `npm run deploy`. The worker in `worker/index.ts` redirects http and www to https on the bare domain and adds HSTS; custom domains are set in `wrangler.jsonc`.
+- Done: content, `DRAFT = false`, DNS on Cloudflare (sections 1 to 3 below).
+- Still to do: the old draft preview (route66-driving-school.route66-driving-school.workers.dev, Cloudflare account gndztasarim@gmail.com) should be deleted; email forwarding (section 4, waiting for the owner's email); Google (section 5); owner's list (section 6).
 
 ## B. Going live (after the owner's corrections)
 
@@ -29,7 +28,7 @@ While `DRAFT = true`, the preview is not indexed by search engines.
 
 1. In Cloudflare, go to **Workers & Pages → route66-driving-school → Settings → Domains & Routes → Add → Custom domain**.
 2. Add `route66drivingschool.co.uk`, then add `www.route66drivingschool.co.uk`.
-3. Redirect www to the bare domain: **Rules → Redirect Rules**, choose the template "Redirect from WWW to root", status 301.
+3. www to the bare domain is handled by the worker; no redirect rule needed.
 
 ### 4. Email: lessons@route66drivingschool.co.uk forwarding to Michael
 
