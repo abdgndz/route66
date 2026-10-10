@@ -90,3 +90,27 @@ test('sitemap and 404 work', async ({ request, page }) => {
   await page.goto('/does-not-exist');
   await expect(page.locator('h1')).toHaveText('Wrong turn');
 });
+
+test('analytics only loads after consent', async ({ page }) => {
+  const gaRequests: string[] = [];
+  page.on('request', (r) => {
+    if (r.url().includes('googletagmanager.com')) gaRequests.push(r.url());
+  });
+  await page.route('**/googletagmanager.com/**', (r) => r.fulfill({ status: 200, body: '' }));
+  await page.goto('/');
+  const banner = page.locator('#cookie-banner');
+  await expect(banner).toBeVisible();
+  await page.waitForTimeout(300);
+  expect(gaRequests).toHaveLength(0);
+
+  await banner.getByRole('button', { name: 'No thanks' }).click();
+  await expect(banner).toBeHidden();
+  await page.reload();
+  await expect(banner).toBeHidden();
+  expect(gaRequests).toHaveLength(0);
+
+  await page.getByRole('link', { name: 'Cookie settings' }).click();
+  await banner.getByRole('button', { name: 'Accept' }).click();
+  await expect.poll(() => gaRequests.length).toBeGreaterThan(0);
+  expect(gaRequests[0]).toContain('G-1KLBW6DXVR');
+});

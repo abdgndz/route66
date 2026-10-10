@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WaChooser from '../components/WaChooser.astro';
 import StickyBar from '../components/StickyBar.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 import { DRAFT, business, instructors, areas, services } from '../data/site';
 
 interface Props {
@@ -90,8 +91,10 @@ const jsonLd = {
     <Footer />
     <StickyBar />
     <WaChooser />
+    <CookieBanner />
     <script>
       import '../scripts/contact.ts';
+      import '../scripts/analytics.ts';
     </script>
   </body>
 </html>
